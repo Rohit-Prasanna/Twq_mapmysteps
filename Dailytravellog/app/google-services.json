@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "90850298339",
+    "project_id": "mapmysteps-df289",
+    "storage_bucket": "mapmysteps-df289.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90850298339:android:3d9c54f80ecd0ab8dbf8d6",
+        "android_client_info": {
+          "package_name": "com.app.mapmysteps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90850298339-8a8bjhkh6dn4fq9e4kv6a0cf5515bven.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.mapmysteps",
+            "certificate_hash": "fa4f27fb8ce554ac91ff718ba0f3526eb696d129"
+          }
+        },
+        {
+          "client_id": "90850298339-p5djv5cihb4gahgkijgs0t0ji7s499ok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzVhT_sLrigFJyEumsoZ06zLwUMaea1ac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90850298339-p5djv5cihb4gahgkijgs0t0ji7s499ok.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.app.mapmysteps" >
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <permission
+        android:name="com.app.mapmysteps.PERMISSION_START_TRACKING"
+        android:protectionLevel="signature" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DailyTravelLog" >
+
+        <!-- Tracker Activity (updated intent filter) -->
+        <activity
+            android:name=".TrackerActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar.Transparent"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:finishOnTaskLaunch="true"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="start-tracking"
+                    android:pathPattern=".*"
+                    android:scheme="mysteps" />
+            </intent-filter>
+        </activity> <!-- Main Activity (existing) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" >
+
+        </activity> <!-- MessageReceiver Activity (existing) -->
+        <!-- Asset Links for TWA verification (existing) -->
+        <meta-data
+            android:name="asset_statements"
+            android:resource="@string/asset_statements" /> <!-- TWA Activity (existing) -->
+        <activity
+            android:name="com.google.androidbrowserhelper.trusted.LauncherActivity"
+            android:exported="true" >
+            <meta-data
+                android:name="android.support.customtabs.trusted.DEFAULT_URL"
+                android:value="https://mapmysteps.netlify.app/" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true" >
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="mapmysteps.netlify.app"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity> <!-- Location Service (existing) -->
+        <service
+            android:name=".LocationService"
+            android:exported="false"
+            android:foregroundServiceType="location"/>
+    </application>
+
+</manifest>
