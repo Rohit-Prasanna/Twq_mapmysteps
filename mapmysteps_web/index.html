@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GeoJournal - Your Travel Companion</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="loginPage" class="login-page">
+  <div class="login-card">
+    <h2>Login to GeoJournal</h2>
+    <button id="googleSignInBtn">Sign in with Google</button>
+  </div>
+</div>
+
+
+  <header>
+    <div class="header-title">
+      <span class="map-icon-placeholder" aria-hidden="true">🗺️</span>
+      <h1>GeoJournal</h1>
+      <button id="logoutBtn">Logout</button>
+    </div>
+    <div id="currentLocationDisplay" class="current-location-display">
+     
+
+      Lat: N/A, Lon: N/A
+    </div>
+  </header>
+
+  <main>
+    <section id="map-section" class="map-section">
+      <div id="errorDisplay" class="error-message" style="display: none;"></div>
+      <div id="loadingDisplay" class="loading-message" style="display: none;">Fetching location...</div>
+      <button id="requestPermissionButton" style="display: none;" class="permission-button">Grant Location Permission</button>
+      <div id="map"></div>
+    </section>
+
+    <section id="history-panel" class="history-panel">
+      <div class="form-container card">
+        <h2><span class="icon-placeholder">➕</span> Add New Journal Entry</h2>
+        <form id="addEntryForm">
+          <!-- <div>
+            <label for="notes">📝 Notes:</label>
+            <textarea id="notes" name="notes" rows="4" placeholder="Describe your experience..."></textarea>
+          </div> -->
+          <!-- <div>
+            <label for="photo">📸 Photo:</label>
+            <input type="file" id="photo" name="photo" accept="image/*" />
+            <img id="photoPreview" src="#" alt="Photo preview" style="display: none; max-width: 100%; height: auto; margin-top: 10px; border-radius: 4px;" />
+          </div> -->
+          <button type="submit" id="addEntryButton" disabled>Add Entry at Current Location</button>
+           
+        </form>
+      </div>
+
+        <div class="calendar-container">
+          <div class="calendar-header">
+            <button id="prevMonth">&lt;</button>
+            <span id="monthYear">May 2025</span>
+            <button id="nextMonth">&gt;</button>
+          </div>
+          <div class="calendar-grid" id="calendarDays"></div>
+        </div>
+
+
+      <div class="entries-container card">
+        <h2><span class="icon-placeholder">📜</span> Location History</h2>
+        <div id="entriesList" class="scroll-area">
+          <p class="muted">No entries yet. Add your first one!</p>
+        </div>
+      </div>
+
+
+    </section>
+  </main>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+    
+  ></script>
+
+  <script type="module" src="scripts.js"></script>
+</body>
+</html>

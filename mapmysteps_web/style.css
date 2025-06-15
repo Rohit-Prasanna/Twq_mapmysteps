@@ -1,0 +1,394 @@
+:root {
+    --background: hsl(60, 56%, 91%); /* Sand Beige */
+    --foreground: hsl(240, 10%, 3.9%); /* Default Dark */
+    --card-background: hsl(60, 56%, 95%); /* Lighter Beige for cards */
+    --card-foreground: hsl(60, 10%, 20%);
+    --primary: hsl(197, 71%, 73%); /* Sky Blue */
+    --primary-foreground: hsl(197, 71%, 10%); /* Dark Blue */
+    --secondary: hsl(60, 56%, 85%); /* Different Beige */
+    --accent: hsl(180, 100%, 25%); /* Teal */
+    --accent-foreground: hsl(180, 100%, 95%); /* White */
+    --destructive: hsl(0, 84.2%, 60.2%);
+    --border-color: hsl(60, 30%, 80%);
+    --input-border: hsl(60, 30%, 85%);
+    --muted-foreground: hsl(60, 10%, 45%);
+    --radius: 0.5rem;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-md);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.map-icon-placeholder, .icon-placeholder {
+    font-size: 1.5rem;
+}
+
+.current-location-display {
+    font-size: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius);
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    main {
+        flex-direction: row;
+    }
+}
+
+.map-section {
+    flex: 2; /* Takes 2/3 of space on wider screens */
+    display: flex;
+    flex-direction: column;
+    min-height: 300px; /* Ensure map has space on mobile */
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    background-color: var(--muted-foreground); /* Placeholder color before map loads */
+    flex-grow: 1;
+}
+
+.history-panel {
+    flex: 1; /* Takes 1/3 of space on wider screens */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: calc(100vh - 100px); /* Adjust based on header height */
+    overflow-y: auto;
+}
+
+.card {
+    background-color: var(--card-background);
+    color: var(--card-foreground);
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+}
+
+.form-container h2, .entries-container h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--input-border);
+    border-radius: calc(var(--radius) - 2px);
+    box-sizing: border-box;
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+button {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: calc(var(--radius) - 2px);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+button:hover {
+    background-color: hsl(180, 100%, 30%); /* Darker Teal */
+}
+
+button:disabled {
+    background-color: var(--muted-foreground);
+    cursor: not-allowed;
+}
+
+.permission-button {
+    background-color: var(--secondary);
+    color: var(--card-foreground);
+    margin-bottom: 1rem;
+}
+.permission-button:hover {
+     background-color: hsl(60, 56%, 75%);
+}
+
+
+.scroll-area {
+    overflow-y: auto;
+    max-height: 400px; /* Adjust as needed */
+    padding-right: 0.5rem; /* For scrollbar */
+}
+
+.entry-card {
+    background-color: var(--secondary);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: calc(var(--radius) - 2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.entry-card h4 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    color: var(--accent);
+}
+
+.entry-card .timestamp {
+    font-size: 0.8rem;
+    color: var(--muted-foreground);
+    margin-bottom: 0.5rem;
+}
+
+.entry-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: calc(var(--radius) - 4px);
+    margin-top: 0.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.entry-card p {
+    margin-bottom: 0.25rem;
+}
+
+.muted {
+    color: var(--muted-foreground);
+    font-style: italic;
+}
+
+.error-message {
+    background-color: var(--destructive);
+    color: white;
+    padding: 0.75rem;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.loading-message {
+    background-color: var(--secondary);
+    color: var(--card-foreground);
+    padding: 0.75rem;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+/* Leaflet Customizations */
+.leaflet-popup-content-wrapper {
+  background-color: var(--card-background) !important;
+  color: var(--card-foreground) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+.leaflet-popup-content {
+  max-height: 150px;
+  overflow-y: auto;
+  margin: 12px !important;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  min-width: 150px;
+}
+.leaflet-popup-tip {
+  background: var(--card-background) !important;
+  box-shadow: none !important;
+}
+.leaflet-container a.leaflet-popup-close-button {
+  color: var(--card-foreground) !important;
+}
+.leaflet-container a.leaflet-popup-close-button:hover {
+  color: var(--destructive) !important;
+}
+
+.current-location-icon {
+    font-size: 24px; /* Adjust emoji size */
+    text-shadow: 0 0 3px #00000080;
+}
+
+
+
+.login-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.login-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  width: 300px;
+}
+
+.login-card h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.login-card label {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 0.6rem;
+  background: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-card button:hover {
+  background: #004a99;
+}
+
+
+
+.calendar-container {
+  width: 300px;
+  font-family: sans-serif;
+  background: white;
+  border-radius: 10px;
+    justify-content: center;      /* centers horizontally */
+  align-items: center; 
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: grid;
+    
+}
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+.calendar-grid div {
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+.calendar-grid .dot::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #448aff;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.calendar-grid .selected {
+  background: #448aff;
+  color: white;
+}
+.calendar-grid .logged {
+  background: #e6e3e3;
+  color: black;
+}
+.calendar-grid .today {
+  background: #afc9f7;
+  color: white;
+}
+.calendar-wrapper {
+  display: flex;
+  justify-content: center;      /* centers horizontally */
+  align-items: center;          /* centers vertically */
+  min-height: 100vh;            /* full screen height */
+  background-color: #f4f4f4;
+  opacity: 0.7;    /* optional: soft background */
+}
