@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GeoJournal - Your Travel Companion</title>
+  <title>MapmySteps - Your Travel Companion</title>
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -16,7 +16,7 @@
 <body>
 <div id="loginPage" class="login-page">
   <div class="login-card">
-    <h2>Login to GeoJournal</h2>
+    <h2>Login</h2>
     <button id="googleSignInBtn">Sign in with Google</button>
   </div>
 </div>
@@ -25,8 +25,8 @@
   <header>
     <div class="header-title">
       <span class="map-icon-placeholder" aria-hidden="true">🗺️</span>
-      <h1>GeoJournal</h1>
-      <button id="logoutBtn">Logout</button>
+      <h1>MapmySteps</h1>
+      <button onclick=stop() id="logoutBtn">Logout</button>
     </div>
     <div id="currentLocationDisplay" class="current-location-display">
      
@@ -78,8 +78,12 @@
         </div>
       </div>
 
+      <button onclick= start() id="startTracking" >Start Tracking</button>
+
 
     </section>
+    
+
   </main>
 
   <script
@@ -88,7 +92,13 @@
     crossorigin=""
     
   ></script>
+  <script>
+  function start() { window.location.href = `mysteps://start-tracking?msg=start`; }
+  function stop() { window.location.href = `mysteps://start-tracking?stop=stop`; }
 
-  <script type="module" src="scripts.js"></script>
+
+  </script>
+
+  <script type="module" src="script.js"></script>
 </body>
 </html>
