@@ -79,7 +79,7 @@ class TrackerActivity : AppCompatActivity() {
                     Toast.makeText(this, "Invalid token", Toast.LENGTH_SHORT).show()
                     Log.w(TAG, "⚠️ Token not found in URI")
                     Toast.makeText(this, "Invalid token in URI", Toast.LENGTH_SHORT).show()
-                }x
+                }
             }
         } else {
             Toast.makeText(this, "Unsupported intent", Toast.LENGTH_SHORT).show()
